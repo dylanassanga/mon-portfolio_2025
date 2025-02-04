@@ -1,0 +1,93 @@
+ 1. Erreur : "error: 'true_portfolio/' does not have a commit checked out"
+ Problème :
+
+Cette erreur est survenue lorsque j’ai tenté d’ajouter mes fichiers avec git add ..
+Le dossier true_portfolio/ était un sous-module Git, ce qui empêchait son ajout.
+ Solution :
+
+J’ai supprimé le suivi Git de ce dossier en exécutant :
+bash
+Copier
+Modifier
+git rm --cached true_portfolio
+rm -rf true_portfolio/.git
+Ensuite, j’ai ajouté mes fichiers normalement :
+bash
+Copier
+Modifier
+git add . grace au tp de Mr Oddoz.
+git commit -m "Ajout du portfolio sans sous-module"
+git push origin main
+ 2. Problème pour partager ma branche avec mon collaborateur
+ Problème :
+
+Je voulais permettre à mon collaborateur d’accéder à mon repository et de voir ma branche.
+Je ne savais pas comment pousser une branche sur GitHub ni comment lui donner accès.
+ Solution :
+
+J’ai créé une nouvelle branche et l’ai poussée sur GitHub :
+bash
+Copier
+Modifier
+git checkout -b ma-branche
+git push origin ma-branche
+Ensuite, j’ai ajouté mon collaborateur sur GitHub :
+Settings → Collaborators → Ajouter son pseudo GitHub.
+ 3. Mon collaborateur ne voyait pas ma branche sur GitHub
+ Problème :
+
+Après avoir partagé ma branche, mon collaborateur ne la voyait pas sur GitHub.
+ Solution :
+
+Il devait récupérer les nouvelles branches en exécutant :
+bash
+Copier
+Modifier
+git fetch origin
+git checkout ma-branche
+ 4. Mon collaborateur n’a pas créé sa branche
+ Problème :
+
+J’attendais que mon binôme crée et pousse une branche, mais il ne l’avait pas encore fait.
+ Solution :
+Je lui ai demandé d’exécuter ces commandes :
+
+bash
+Copier
+Modifier
+git checkout -b nouvelle-branche
+git add .
+git commit -m "Ajout d’un fichier sur la branche"
+git push origin nouvelle-branche
+Ensuite, j’ai pu récupérer sa branche avec :
+
+bash
+Copier
+Modifier
+git fetch origin
+git checkout nouvelle-branche
+ 5. Problème pour ajouter un fichier .txt sur GitHub
+ Problème :
+
+Je voulais intégrer un fichier .txt dans mon repository GitHub via VS Code mais ne savais pas comment procéder.
+ Solution :
+
+J’ai ajouté mon fichier :
+bash
+Copier
+Modifier
+git add mon_fichier.txt
+Puis j’ai fait un commit et envoyé la modification :
+bash
+Copier
+Modifier
+git commit -m "Ajout du fichier mon_fichier.txt"
+git push origin main
+ Conclusion
+Grâce à ces solutions, j’ai réussi à :
+ Initialiser et héberger mon portfolio sur GitHub.
+ Collaborer avec mon binôme en partageant nos branches.
+Ajouter et modifier des fichiers sans erreur.
+
+Si c'était à refaire, je ferais plus attention à la gestion des sous-modules, des branches et à la collaboration via GitHub dès le début. 
+
